@@ -25,15 +25,20 @@
 
 </head>
 <body>
-
-	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
 		<div class="container">
+			<a href="/index.html" class="navbar-brand">Склад</a>
+			<!-- <ul class="navbar-menu">-->
 
+            <a href="/index_addDel.html" class="navbar-brand">Добавить на склад</a>
+				<!-- <li><a href="index_info.html">Авторизация</a></li> -->
+            <a href="/index_info.html" class="navbar-brand">Контакты</a>
+			<!-- </ul>-->
 		</div>
 	</nav>
     <!-- CRUD таблица изменения бд сайта -->
     <div class="container">
-    <form method="POST" >
+    <form method="post" >
         {% csrf_token %}
 
 		 <div class="form-row">
@@ -43,18 +48,18 @@
                <span class="validity"></span>
            </div>
            <div class="form-group col-md-6">
-               <label for="TitleName">действующее вещество</label><br>
-                    <input type="text" class="form-control" name="agent" id ="agnet" placeholder="{{farma.agent}}" value = "{{farma.agent}}" required/>
+               <label for="agent">действующее вещество</label><br>
+                    <input type="text" class="form-control" name="agent" id ="agent" placeholder="{{farma.agent}}" value = "{{farma.agent}}" required/>
                <span class="validity"></span>
            </div>
          </div>
            <div class="form-group col-md-6">
-                <label for="inputStitle">Форма Выпуска</label>
+                <label for="form">Форма Выпуска</label>
                 <input type="text" class="form-control" name = "form" id="form" maxlength="15" placeholder="{{farma.form}}" value = "{{farma.form}}" required/>
                <span class="validity"></span>
 
            <div class="form-group col-md-12">
-                <label for="inputStitle">Действие</label>
+                <label for="action">Действие</label>
                <input type="text" class="form-control" name = "action" id="action" maxlength="15" placeholder="{{farma.action}}" value = "{{farma.action}}" required/>
                <span class="validity"></span>
             </div>
@@ -62,9 +67,9 @@
 
 
            <div class="form-group col-md-6">
-               <label for="SubGroupInput"> Показания </label><br>
+               <label for="need"> Показания </label><br>
                <input type="text" class="form-control" name="need" id="need" placeholder="{{farma.need}}" value = "{{farma.need}}"/>
-               <label for="CommentInput"> Противопоказания </label><br>
+               <label for="non"> Противопоказания </label><br>
                <input type="text" class="form-control" name="non" id="non" placeholder="{{farma.non}}" value = "{{farma.non}}"/>
            </div>
 
@@ -75,7 +80,7 @@
                  <span class="validity"></span>
 
            </div>
-		<input type="submit" value="Сохранить" class="btn btn-primary" />
+		<input type="submit" value="Сохранить"  class="btn btn-primary" />
     </form>
     </div>
 	<!-- CRUD таблица изменения бд сайта -->
