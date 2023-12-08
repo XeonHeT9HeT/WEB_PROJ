@@ -37,39 +37,17 @@
 			<!-- <ul class="navbar-menu">-->
 
             <a href="index_addDel.html" class="navbar-brand">Добавить на склад</a>
-            <a href="index_register.html" class="navbar-brand">Регистрация</a>
-			<a href="index_login.html" class="navbar-brand">Авторизация</a>
+            <a href="index_login.html" class="navbar-brand">Авторизация</a>
+            <a href="index_info.html" class="navbar-brand">Контакты</a>
 			<!-- </ul>-->
 		</div>
 	</nav>
+	<form method="post">
 
+			{% csrf_token %}
+			{{form.as_p}}
+			<button type="submit" class="btn btn-primary">Регистрация</button>
 
-	<!-- Событие-->
-	<div class="container">
-
-		<div class="row">
-		 {% for prep in farma %}
-			<div class="col-md-4">
-				<div class="new">
-					<div class = "image">
-						<!--<img src = "http://placehold.it/300x400" alt ="">-->
-					</div>
-					<div class="info">
-						<h3>{{ prep.name }}</h3>
-						<div class="info-description">
-							<!--<span class="time">{{ prep.name }}</span>-->
-							<span class="description">{{ prep.agent }}</span>
-							<!--<button class="go-to-new"><ion-icon name="open-outline"></ion-icon></button>-->
-						</div>
-					</div>
-
-				</div>
-			</div>
-			{% endfor %}
-		</div>	
-	</div>
-	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+	</form>
 </body>
 </html>
