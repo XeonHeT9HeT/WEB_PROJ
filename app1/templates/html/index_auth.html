@@ -16,7 +16,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 	<!-- Стили сайта -->
-	<link rel="stylesheet" href="/static/styles/styles.css">
+	<link rel="stylesheet" href="/static/styles/auth_styles.css">
 
 	<link rel="icon" href="/static/data/favicon.svg" type="image/svg+xml">
 
@@ -25,31 +25,33 @@
 
 
 </head>
-<body>
 
-	<nav class="navbar">
-		<div class="container">
-			<a href="index.html" class="navbar-brand">Склад</a>
+<nav class="navbar">
+		<div class="registration-cssave">
+			<a href="/index.html" class="ret">Вернуться</a>
 		</div>
 	</nav>
-<p class="text-center">Логин</p>
-
-               <div class="container text-center">
-                    <input type="text"  name="name" id = "Prep"  required/>
-                   <span class="validity"></span>
-               </div>
-
-<p class="text-center">Пароль</p>
-
-               <div class="container text-center">
-                    <input type="password"      name="name" id = "Prep"  required/>
-                   <span class="validity"></span>
+<body>
 
 
 
-    </div>
-    <div class = "container image-center">
-        <img src = "/static/data/identifier.jpg" width="500" height="500" alt ="">
-    </div>
+<div class="registration-cssave">
+    <form>
+        <h3 class="text-center">Форма входа</h3>
+        <div class="form-group">
+            <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control item" type="password" name="Пароль" minlength="6" id="password" placeholder="Пароль" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control item" type="email" name="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary btn-block create-account" type="submit">Вход в аккаунт</button>
+        </div>
+    </form>
+</div>
+
 </body>
 </html>
