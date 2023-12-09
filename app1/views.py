@@ -1,9 +1,12 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
-from .models import Farma
+from .models import *
 
 
 ###ФУНКЦИИ ДЛЯ РЕКВЕСТОВ (СТРАНИЦЫ)###
@@ -90,4 +93,17 @@ def index_register(request):
 
 
 def index_login(request):
-    return render(request, 'html/index_login.html')
+    if request.method == "post":
+        form = AuthenticationForm(request.POST)
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        return redirect('/')
+    else:
+        form = AuthenticationForm()
+    return render(request, "html/index_login.html", {'form': form})
+
+def index_logout(request):
+    logout(request)
+    return redirect('/index_login.html')

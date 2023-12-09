@@ -40,14 +40,22 @@
             <a href="index_register.html" class="navbar-brand">Регистрация</a>
             <a href="index_info.html" class="navbar-brand">Контакты</a>
 			<!-- </ul>-->
+            {% if request.user.is_authenticated %}
+				    <li><a style = "color: black">{{ user.get_username }} </a>|<a style = "color: black" href="/logout">Выйти</a></li>
+				{% else %}
+				     <li><a style = "color: black" href="index_register.html">Регистрация</a></li>
+				{% endif %}
 		</div>
 	</nav>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 	<form method="post">
-
-			{% csrf_token %}
-			{{form.as_p}}
-			<button type="submit" class="btn btn-primary">Авторизация</button>
-
+			<div class="container">
+				{% csrf_token %}
+				{{form.as_p}}
+				<button type="submit" class="btn btn-primary">Вход</button>
+			</div>
 	</form>
 </body>
 </html>

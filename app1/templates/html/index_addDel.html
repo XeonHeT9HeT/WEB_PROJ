@@ -36,6 +36,11 @@
 				<!-- <li><a href="index_info.html">Авторизация</a></li> -->
             <a href="index_info.html" class="navbar-brand">Контакты</a>
 			<!-- </ul>-->
+            {% if request.user.is_authenticated %}
+				    <li><a style = "color: black">{{ user.get_username }} </a>|<a style = "color: black" href="/logout">Выйти</a></li>
+				{% else %}
+				     <li><a style = "color: black" href="index_register.html">Регистрация</a></li>
+				{% endif %}
 		</div>
 	</nav>
     <!-- CRUD таблица изменения бд сайта -->

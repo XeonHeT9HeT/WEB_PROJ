@@ -19,4 +19,5 @@ urlpatterns = [
     path('index_auth.html', index_auth),
     path('index_register.html', index_register),
     path('index_login.html', index_login),
+    path('logout/', index_logout, name='logout'),
 ]

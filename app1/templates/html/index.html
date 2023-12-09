@@ -40,6 +40,11 @@
             <a href="index_register.html" class="navbar-brand">Регистрация</a>
 			<a href="index_login.html" class="navbar-brand">Авторизация</a>
 			<!-- </ul>-->
+            {% if request.user.is_authenticated %}
+				    <li><a style = "color: black">{{ user.get_username }} </a>|<a style = "color: black" href="/logout">Выйти</a></li>
+				{% else %}
+				     <li><a style = "color: black" href="index_register.html">Регистрация</a></li>
+				{% endif %}
 		</div>
 	</nav>
 
