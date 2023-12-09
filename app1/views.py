@@ -32,7 +32,7 @@ def create(request):
         farma.non = request.POST.get("non")
         farma.subAction = request.POST.get("subAction")
         farma.save()
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/index.html")
 
 
 # изменение данных в бд
@@ -50,7 +50,7 @@ def edit(request, id):
             farma.non = request.POST.get("non")
             farma.subAction = request.POST.get("subAction")
             farma.save()
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/index.html")
         else:
             return render(request, "html/edit.html", {"farma": farma})
     except Farma.DoesNotExist:
@@ -62,7 +62,7 @@ def delete(request, id):
     try:
         farma = Farma.objects.get(id=id)
         farma.delete()
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/index.html")
     except Farma.DoesNotExist:
         return HttpResponseNotFound("<h2>Farma not found</h2>")
 
@@ -86,20 +86,21 @@ def index_register(request):
             # выполняем аутентификацию
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('/')
+            return redirect('/index.html')
     else:
         form = UserCreationForm()
     return render(request, 'html/index_register.html', {'form': form})
 
 
 def index_login(request):
-    if request.method == "post":
-        form = AuthenticationForm(request.POST)
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password1')
-        user = authenticate(username=username, password=password)
+    if request.method == 'POST':
+        form = AuthenticationForm(data = request.POST)
+        form.is_valid()
+        use = form.cleaned_data.get('username')
+        pas = form.cleaned_data.get('password')
+        user = authenticate(username=use, password=pas)
         login(request, user)
-        return redirect('/')
+        return redirect('/index.html')
     else:
         form = AuthenticationForm()
     return render(request, "html/index_login.html", {'form': form})

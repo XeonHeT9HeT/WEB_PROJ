@@ -22,6 +22,7 @@
 	<!-- Стили сайта !!!!###Переписать STYLESHEET под STATIC папку###!!! -->
 	<link rel="stylesheet" href="/static/styles/styles.css">
 
+    <link rel="stylesheet" href="/static/styles/auth_styles.css">
 
 	<link rel="icon" href="/static/data/favicon.svg" type="image/svg+xml">
 
@@ -33,23 +34,25 @@
 
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
 		<div class="container">
-			<a href="index.html" class="navbar-brand">Склад</a>
-			<!-- <ul class="navbar-menu">-->
+			<!--<a href="index.html" class="navbar-brand">Склад</a>
+			 <ul class="navbar-menu">
 
             <a href="index_addDel.html" class="navbar-brand">Добавить на склад</a>
             <a href="index_register.html" class="navbar-brand">Регистрация</a>
-            <a href="index_info.html" class="navbar-brand">Контакты</a>
+            <a href="index_info.html" class="navbar-brand">Контакты</a>-->
 			<!-- </ul>-->
             {% if request.user.is_authenticated %}
-				    <li><a style = "color: black">{{ user.get_username }} </a>|<a style = "color: black" href="/logout">Выйти</a></li>
+				    <li><a class="navbar-brand">{{ user.get_username }} </a>|<a class="navbar-brand" href="/logout">Выйти</a></li>
 				{% else %}
-				     <li><a style = "color: black" href="index_register.html">Регистрация</a></li>
+				     <li><a href="index_register.html" class="navbar-brand">Регистрация</a></li>
 				{% endif %}
 		</div>
 	</nav>
-	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+ <h3 class="text-center">Вход в систему</h3>
+
+<div class="registration-cssave">
+    <div class="form-group">
 	<form method="post">
 			<div class="container">
 				{% csrf_token %}
@@ -57,5 +60,7 @@
 				<button type="submit" class="btn btn-primary">Вход</button>
 			</div>
 	</form>
+    </div>
+    </div>
 </body>
 </html>

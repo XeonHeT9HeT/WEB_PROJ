@@ -9,7 +9,7 @@ from .views import *
     ###НЕ ЗАБУДЬ В SETTING ПРОПИСАТЬ ДЛЯ МОДУЛЯ ПУТЬ В INSTALLED APPS####
 
 urlpatterns = [
-    path('', index),
+    path('', index_login),
     path('index.html', index),
     path('index_addDel.html', index_addDel),
     path("create/", create),
