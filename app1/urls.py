@@ -20,4 +20,5 @@ urlpatterns = [
     path('index_register.html', index_register),
     path('index_login.html', index_login),
     path('logout/', index_logout, name='logout'),
+    path('index_hack.html', index_hack),
 ]

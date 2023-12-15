@@ -6,6 +6,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
+from django.template.context_processors import request
+
 from .models import *
 
 
@@ -22,6 +24,8 @@ def index_addDel(request):
 
 # сохранение данных в бд
 def create(request):
+    if request.user.is_superuser == False:
+        return HttpResponseRedirect("/index_hack.html")
     if request.method == "POST":
         farma = Farma()
         farma.name = request.POST.get("name")
@@ -60,6 +64,8 @@ def edit(request, id):
 
 # удаление данных из бд
 def delete(request, id):
+    if request.user.is_superuser == False:
+        return HttpResponseRedirect("/index_hack.html")
     try:
         farma = Farma.objects.get(id=id)
         farma.delete()
@@ -112,3 +118,6 @@ def index_login(request):
 def index_logout(request):
     logout(request)
     return redirect('/index_login.html')
+
+def index_hack(request):
+    return render(request, "html/index_hack.html")

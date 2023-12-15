@@ -8,3 +8,4 @@ class Farma(models.Model):
     need = models.CharField(max_length=500)
     non = models.CharField(max_length=500)
     subAction = models.CharField(max_length=500)
+
