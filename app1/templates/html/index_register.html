@@ -26,27 +26,27 @@
 
 </head>
 <body>
-<img src = "/static/data/logotip.jpg" alt ="">
 
 
-    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary" style="border-radius: 10px">
 		<div class="container">
-			<a class="navbar-brand">Создание аккаунта</a>
+			<a class="navbar-brand" href="index_login.html" >Вход</a>
 			<!-- <ul class="navbar-menu">-->
 			<!-- </ul>-->
 		</div>
 	</nav>
+     <h3 class="text-center">Регистрация в системе</h3>
 <div class="registration-cssave">
-    <div class="form-group">
-	<form method="post">
+    <form method="post">
+        <div class="form-group">
 
 			{% csrf_token %}
 			{{form.as_p}}
-			<button type="submit" class="btn btn-primary">Регистрация</button>
-
+			<button style="background-color: lightskyblue" type="submit" class="btn create-account">Регистрация</button>
+        </div>
 
 	</form>
-    </div>
 </div>
 </body>
 </html>

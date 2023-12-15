@@ -57,19 +57,31 @@
 		<div class="row">
 		 {% for prep in farma %}
 			<div class="col-md-4">
-				<div class="new">
+				<div class="new" style="max-width:800px;
+  padding:50px 70px;
+  border-radius:10px;
+  box-shadow:4px 4px 15px rgba(0, 0, 0, 0.2);
+
+  background-color:#fff;">
 					<div class = "image">
 						<!--<img src = "http://placehold.it/300x400" alt ="">-->
 					</div>
-					<div class="info">
+					<div class="info" style="text-align: center">
 						<h3>{{ prep.name }}</h3>
 						<div class="info-description">
-							<!--<span class="time">{{ prep.name }}</span>-->
-							<span class="description">{{ prep.agent }}</span>
-							<!--<button class="go-to-new"><ion-icon name="open-outline"></ion-icon></button>-->
+							<span class="description">Вещество: {{ prep.agent }}</span>
 						</div>
 					</div>
-
+                    {% if request.user.is_superuser %}
+                <a class="btn" style="border-radius:30px;
+  padding:5px 10px;
+  font-size:15px;
+  font-weight:bold;
+  background-color:grey;
+  border:none;
+  color:whitesmoke;
+  margin-top:20px;" href="edit/{{prep.id}}">Изменить</a>
+                    {% endif %}
 				</div>
 			</div>
 			{% endfor %}

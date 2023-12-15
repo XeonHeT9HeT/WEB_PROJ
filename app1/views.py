@@ -41,6 +41,7 @@ def edit(request, id):
         farma = Farma.objects.get(id=id)
 
         if request.method == "POST":
+            delete(request, id)
             farma = Farma()
             farma.name = request.POST.get("name")
             farma.agent = request.POST.get("agent")
