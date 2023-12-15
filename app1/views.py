@@ -100,7 +100,10 @@ def index_login(request):
         use = form.cleaned_data.get('username')
         pas = form.cleaned_data.get('password')
         user = authenticate(username=use, password=pas)
-        login(request, user)
+        if user == None:
+            return redirect('/index_login.html')
+        else:
+            login(request, user)
         return redirect('/index.html')
     else:
         form = AuthenticationForm()
